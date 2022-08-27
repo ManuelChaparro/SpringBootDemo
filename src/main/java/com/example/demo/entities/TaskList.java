@@ -1,8 +1,9 @@
-package com.example.demo;
+package com.example.demo.entities;
+
+import com.example.demo.entities.Task;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TaskList {
 
