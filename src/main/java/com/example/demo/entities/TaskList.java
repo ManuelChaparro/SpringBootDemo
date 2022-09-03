@@ -1,10 +1,12 @@
 package com.example.demo.entities;
 
 import com.example.demo.entities.Task;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class TaskList {
 
     private String name;
@@ -21,21 +23,5 @@ public class TaskList {
 
     public void addTaskList(Task task){
         taskList.add(task);
-    }
-
-    public void setTaskList(List<Task> taskList) {
-        this.taskList = taskList;
-    }
-
-    public List<Task> getTaskList() {
-        return taskList;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
