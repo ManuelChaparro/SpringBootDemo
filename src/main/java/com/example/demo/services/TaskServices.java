@@ -20,8 +20,7 @@ public class TaskServices {
         return this.repository.findAll();
     }
 
-    public void addTask(){
-        Task t = new Task("Subida de prueba", false, LocalDate.of(2022, 11, 1));
-        this.repository.save(t);
+    public Task createTask(Task task){
+        return this.repository.save(task);
     }
 }
