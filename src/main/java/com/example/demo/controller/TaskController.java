@@ -11,19 +11,19 @@ import java.util.List;
 @RestController
 public class TaskController {
 
-    private TaskServices services;
+    private final TaskServices SERVICES;
 
     public TaskController(TaskServices services){
-        this.services = services;
+        this.SERVICES = services;
     }
 
     @GetMapping("/tasks")
     public List<Task> getTaskList(){
-        return services.getTaskList();
+        return SERVICES.getTaskList();
     }
 
     @PostMapping("/tasks")
     public Task createTask(@RequestBody Task task){
-        return this.services.createTask(task);
+        return this.SERVICES.createTask(task);
     }
 }
