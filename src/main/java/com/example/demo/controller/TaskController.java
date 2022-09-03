@@ -1,16 +1,31 @@
 package com.example.demo.controller;
 
 import com.example.demo.entities.Task;
+import com.example.demo.entities.TaskList;
+import com.example.demo.services.TaskServices;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 public class TaskController {
 
-    @GetMapping("tasks")
-    public Task taskList(){
-        return new Task("Esta es una tarea para matematicas", false, LocalDate.of(2022, 8, 20));
+    private TaskServices services;
+
+    public TaskController(TaskServices services){
+        this.services = services;
     }
+
+    @GetMapping("/tasks")
+    public List<Task> TaskList(){
+        return services.getTaskList();
+    }
+
+    @GetMapping("/add")
+    public void addTask(){
+        services.addTask();
+    }
+
 }

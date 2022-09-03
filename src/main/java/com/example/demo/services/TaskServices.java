@@ -1,37 +1,27 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Task;
-import com.example.demo.entities.TaskList;
+import com.example.demo.repositories.TaskRepositorio;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
+@Service
 public class TaskServices {
-    Task t1;
-    Task t2;
-    Task t3;
-    Task t4;
-    Task t5;
 
-    TaskList metas;
+    private TaskRepositorio repository;
 
-    public TaskServices(){
-        this.t1 = new Task("Recordar POO", true, LocalDate.of(2022, 8, 29));
-        this.t2 = new Task("Conocer Intellij IDEA", false, LocalDate.of(2022, 8, 30));
-        this.t3 = new Task("Conocer Java Spring Boot", true, LocalDate.of(2022, 8, 20));
-        this.t4 = new Task("Afinar la arquitectura del proyecto", true, LocalDate.of(2022, 8, 20));
-        this.t5 = new Task("Finalizar tareas", true, LocalDate.of(2022, 8, 20));
-
-        this.metas = new TaskList("Ciclo 3");
-
-        this.metas.addTaskList(t1);
-        this.metas.addTaskList(t2);
-        this.metas.addTaskList(t3);
-        this.metas.addTaskList(t4);
-        this.metas.addTaskList(t5);
+    public TaskServices(TaskRepositorio repository){
+        this.repository = repository;
     }
 
-    public TaskList getTaskList(){
-        return this.metas;
+    public List<Task> getTaskList(){
+        return this.repository.findAll();
+    }
+
+    public void addTask(){
+        Task t = new Task("Subida de prueba", false, LocalDate.of(2022, 11, 1));
+        this.repository.save(t);
     }
 }
