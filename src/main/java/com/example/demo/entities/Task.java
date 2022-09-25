@@ -10,7 +10,7 @@ import lombok.*;
 @Table(name = "task")
 public class Task {
 
-    @Id @GeneratedValue(strategy=GenerationType.AUTO) private long id;
+    @Id @GeneratedValue(strategy=GenerationType.AUTO) public long id;
     @Column(name = "description")
     private String description;
     @Column(name = "done")
